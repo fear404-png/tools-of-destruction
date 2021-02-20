@@ -52,6 +52,13 @@ body {
   font-size: 16px;
   font-weight: 700;
 }
+.product__img {
+  width: 80%;
+  transition: all 0.4s ease 0s;
+}
+.product__img:hover {
+  width: 90%;
+}
 
 .btm {
   display: flex;
@@ -195,7 +202,7 @@ body {
   max-width: 710px;
 }
 
-.main:hover {
+.main:before {
   background-position: 0;
 }
 
@@ -278,15 +285,11 @@ body {
   background: url("/img/bg-section-2.png");
   background-repeat: no-repeat;
   background-position: center center;
-  transition: all 0.5s ease 0s;
 }
 @media (max-width: 1200px) {
   .old-collection__cover {
     width: 100%;
   }
-}
-.old-collection__cover:hover {
-  background-position: center top;
 }
 .old-collection__info {
   display: flex;
