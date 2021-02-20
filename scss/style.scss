@@ -4,6 +4,135 @@
   box-sizing: border-box;
 }
 
+.mobile-menu {
+    margin-top: 20px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 16px;
+    top: 0;
+    background-color: $bg;
+    left: 0;
+    right: 0;
+    height: 50px;
+    z-index: 9999999;
+    
+    &__btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 30px;
+      cursor: pointer;
+      transition: .4s;
+    }
+    
+    &__icon {
+      display: block;
+      position: relative;
+      background: rgba(255,255,255,1);
+      width: 90%;
+      height: 4px;
+      transition: .4s;
+  
+      &::after,
+      &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          background: rgba(255,255,255,1);
+          width: 100%;
+          height: 4px;
+          transition: .4s;
+      }
+      &::after {
+        top: 8px;
+      }
+      &::before {
+        top: -8px;
+      }
+    }
+  
+    &__container {
+      
+      position: fixed;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 50px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      height: 0;
+      opacity: 1;
+      transition: .5s;
+      transition-delay: .2s;
+      overflow: hidden;
+      background-color: green;
+    }
+    
+    &__list {
+      transition: .5s;
+      transition-delay: .5s;
+      list-style: none;
+      padding-left: 0;
+      margin-top: -50px;
+    }
+  
+    &__item {
+      font-size: 26px;
+      padding-bottom: 15px;
+    }
+  
+    &__link {
+      text-decoration: none;
+      color: #fff;
+    }
+   
+    &__checkbox {
+        display: none;
+  
+        &:checked ~ {
+            .mobile-menu {
+  
+                &__nav {
+                  opacity: 1;
+                  transition-delay: 0s;
+                }
+  
+                &__container {
+                  height: 100%;
+                  transition-delay: 0s;
+                }
+  
+                &__btn {
+                  .mobile-menu__icon {
+                      background: transparent;
+  
+                      &::before,
+                      &::after {
+                          top: 0;
+                      }
+    
+                      &::after {
+                        transform: rotate(-45deg);
+                        -webkit-transform: rotate(-45deg);
+                      }
+    
+                      &::before {
+                        transform: rotate(45deg);
+                        -webkit-transform: rotate(45deg);
+                      }
+                  }
+                }
+            }
+        }
+      }
+  }
+
 body {
   font-family: "Jura", sans-serif;
   background: $bg;
@@ -69,13 +198,14 @@ body {
   }
 }
 .btm:hover {
-    background: $accent;
+  background: $accent;
 }
 .btm__text:hover {
-    color: $bg;
+  color: $bg;
 }
 
 .header {
+  margin: 0 auto;
   color: $red;
 
   //top-panel
@@ -97,7 +227,6 @@ body {
     display: inline-flex;
     flex: 0 0 50%;
     justify-content: end;
-    
   }
   &__login {
     color: $red;
@@ -105,7 +234,7 @@ body {
     transition: all 0.1s ease 0s;
   }
   &__login:hover {
-      color: $redAccent;
+    color: $redAccent;
   }
   &__account-img {
     margin-right: 10px;
@@ -115,13 +244,14 @@ body {
   &__bot {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     margin: 13px 0;
   }
   &__logo {
     display: flex;
     flex: 0 0 50%;
-    @include breakpoint (lg) {
-        flex: 0 0 20%;
+    @include breakpoint(lg) {
+      flex: 0 0 20%;
     }
     &-link {
       text-decoration: none;
@@ -129,17 +259,13 @@ body {
       font-size: 36px;
       transition: all 0.5s ease 0s;
     }
-    &-link:hover{
-        color:$accent;
+    &-link:hover {
+      color: $accent;
     }
   }
   &__navigation-panel {
     display: flex;
     justify-content: end;
-    flex: 0 0 50%;
-    @include breakpoint (lg) {
-        flex: 0 0 80%;
-    }
   }
   &__nav {
     list-style-type: none;
@@ -150,13 +276,16 @@ body {
       font-size: 14px;
       color: $red;
       text-decoration: none;
-      margin-right: 20px;
+      margin-right: 15px;
+      white-space: nowrap;
       transition: all 0.5s ease 0s;
+      @include breakpoint(sm) {
+        display: none;
+      }
     }
     &-item:hover {
-        color: $accent;
-        font-size: 15px;
-        
+      color: $accent;
+      font-size: 15px;
     }
   }
   &__bascet-img {
@@ -196,7 +325,7 @@ body {
 }
 
 .main:hover {
-    background-position: 0;
+  background-position: 0;
 }
 
 //new-collection
@@ -209,22 +338,24 @@ body {
     width: 55%;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    
     padding: 0px;
-    @include breakpoint (lg) {
-        width: 100%;
+    @include breakpoint(lg) {
+      width: 100%;
     }
   }
   &__items {
     display: flex;
     margin-top: 20px;
     justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__product {
     margin: 15px;
-    @include breakpoint (lg) {
-        margin: 15px 70px;
+    @include breakpoint(lg) {
+      margin: 15px 70px;
     }
   }
 
@@ -236,9 +367,9 @@ body {
     width: 45%;
     justify-content: center;
     transition: all 0.5s ease 0s;
-    @include breakpoint (lg) {
-        margin-top: 50px;
-        width: 100%;
+    @include breakpoint(lg) {
+      margin-top: 50px;
+      width: 100%;
     }
   }
   &__container:hover {
@@ -251,15 +382,14 @@ body {
     width: 100%;
     padding-top: 300px;
     justify-content: space-around;
-    @include breakpoint (lg) {
-        margin-bottom: 60px;
-        padding-top: 250px;
-        justify-content: space-between;
+    @include breakpoint(lg) {
+      margin-bottom: 60px;
+      padding-top: 250px;
+      justify-content: space-between;
     }
   }
   &__btm {
     padding: 30px 0;
-
   }
 }
 
@@ -268,128 +398,129 @@ body {
   display: flex;
   flex-wrap: wrap;
   flex: 0 0 100%;
-  
+
   &__cover {
     width: 45%;
     background: url("/img/bg-section-2.png");
     background-repeat: no-repeat;
     background-position: center center;
     transition: all 0.5s ease 0s;
-    @include breakpoint (lg) {
-        width: 100%;
+    @include breakpoint(lg) {
+      width: 100%;
     }
   }
   &__cover:hover {
-      background-position: center top;
+    background-position: center top;
   }
   &__info {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      width: 55%;  
-      padding: 110px 0;
-      color: $accent;
-      @include breakpoint (lg) {
-        width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 55%;
+    padding: 110px 0;
+    color: $accent;
+    @include breakpoint(lg) {
+      width: 100%;
     }
-      
   }
   &__description {
-      margin-top: 45px;
-      max-width: 471px;
-      text-align: center;
+    margin-top: 45px;
+    max-width: 471px;
+    text-align: center;
   }
 }
 
 //new-goods
 .new-goods {
-    margin-top: 120px;
-    &__wrapper {
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-    }
-    &__items {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        margin-top: 80px;
-    }
-}
-
-//brands 
-.brands {
+  margin-top: 120px;
+  &__wrapper {
     display: flex;
     flex-flow: column;
     align-items: center;
-    padding-top: 60px;
-    &__img {
-        margin-top: 40px;
-    }
+  }
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 80px;
+  }
+}
+
+//brands
+.brands {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-top: 60px;
+  &__img {
+    margin-top: 40px;
+  }
 }
 
 .footer {
-    margin-top: 65px;
+  margin-top: 65px;
+  display: flex;
+  align-items: center;
+  background: url("/img/bg-footer.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: $accent;
+  @include breakpoint(md) {
+    background: $bg;
+  }
+  &__wrapper {
+    display: flex;
+    margin: 50px auto;
+    justify-content: space-between;
+    @include breakpoint(md) {
+      flex-flow: column;
+      align-items: center;
+    }
+  }
+  &__page {
+    width: 30%;
+    @include breakpoint(md) {
+        width: 95%;
+    }
+  }
+  &__title {
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: 20pxpx;
+  }
+  &__btm {
+    margin: 2px;
+  }
+  &__description {
+    font-size: 14px;
+  }
+  &__categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__email {
+    display: flex;
+  }
+  &__input-email {
+    width: 150px;
+  }
+  &__subscribe {
     display: flex;
     align-items: center;
-    background: url("/img/bg-footer.png");
-    background-repeat: no-repeat;
-    background-position: center center;
+    padding: 0 20px;
+    background: #000;
+    height: 40px;
+  }
+  &__sub {
+    text-decoration: none;
     color: $accent;
-    @include breakpoint (md) {
-        background: $bg;
-    }
-    &__wrapper {
-        display: flex;
-        margin: 50px auto;
-        justify-content: space-between;
-        @include breakpoint (md) {
-            flex-flow: column;
-            align-items: center;
-        }
-    }
-    &__page {
-        width: 30%;
-    }
-    &__title {
-        font-size: 24px;
-        text-transform: uppercase;
-        margin-bottom: 20pxpx;
-    }
-    &__btm {
-        margin: 2px;
-    }
-    &__description {
-        font-size: 14px;
-    }
-    &__categories {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    &__email {
-        display: flex;
-        
-    }
-    &__input-email {
-        width: 150px
-    }
-    &__subscribe {
-        display: flex;
-        align-items: center;
-        padding: 0 20px;
-        background: #000;
-        height: 40px;
-    }
-    &__sub {
-        text-decoration: none;
-        color: $accent;
-    }
+  }
 }
 .last-line {
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    font-size: 12px;
-    padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 12px;
+  padding: 20px 20px;
 }
