@@ -1,0 +1,12 @@
+mixin product(name, price, image)
+    .product.new-collection__product
+        img.product__img(src= image, alt="product") 
+        p.product__name= name
+        p.product__price= price
+mixin title(text)
+    .title
+        p.title__text= text
+        .title__streak
+mixin btm(text, link)
+    .btm
+        a.btm__text(href="#")= text

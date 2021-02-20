@@ -1,0 +1,33 @@
+$accent: #EFE700;
+$bg: #000000;
+$headerBg: #1a1a1a;
+$red:#FE2B74;
+$redAccent:#FE0E52;
+
+@mixin breakpoint($point) {
+    @if $point == lg {
+      @media (max-width: 1200px) {
+        @content;
+      }
+    }
+    @else if $point == md {
+      @media (max-width: 992px) {
+        @content;
+      }
+    }
+    @else if $point == sm {
+      @media (max-width: 576px) {
+        @content;
+      }
+    }
+    @else if $point == xs {
+      @media (max-width: 320px) {
+        @content;
+      }
+    }
+    @else if $point == minlg {
+      @media (min-width: 993px) {
+        @content;
+      }
+    }
+  }

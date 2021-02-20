@@ -1,0 +1,91 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="preconnect", href="https://fonts.gstatic.com")
+        link(href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap", rel="stylesheet")
+        link(rel="stylesheet", href="/css/style.css")
+        include mixin.pug
+    body  
+    
+        
+        header.header 
+            .wrapper 
+                .header__container 
+                    .header__top 
+                        .header__contacts 
+                            img.header__phone-img(src="/img/logo-phone.svg", alt="phone")
+                            p.header__contact-info 8 (812) 123-45-67    |    Работаем 7 дней в неделю    |    9:00 — 18:00
+                        .header__account 
+                            img.header__account-img(src="/img/logo-register.svg", alt="account")
+                            a.header__login(href="#") Войти / Регистрация          
+                .header__bot 
+                    .header__logo 
+                        a.header__logo-link(href="#") TOOLS
+                    .header__navigation-panel
+                        ul.header__nav 
+                            li 
+                                a.header__nav-item(href="#") Понравилось
+                            li 
+                                a.header__nav-item(href="#") Личный кабинет
+                            li 
+                                a.header__nav-item(href="#") Настройки
+                        img.header__bascet-img(src="/img/logo-basket.svg", alt="basket")
+                        img.header__search-img(src="/img/logo-search.svg", alt="search")
+        section.main 
+            .wrapper 
+                .main__container
+                    img.main__logo(src="/img/logo.svg", alt="logo")
+                    p.main__description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus interdum purus, est tortor pulvinar ut in. Fringilla a diam enim sed justo, sed iaculis sagittis. Tortor id eu interdum nec ut iaculis. Penatibus ullamcorper ultricies morbi ipsum sem metus pharetra, mi. Tortor nibh magna feugiat id nunc, dui nisl viverra.
+        section.new-collection  
+            .new-collection__season 
+                +title('СЕЗОН 2020/21')
+                .new-collection__items  
+                    - for (x = 0; x < 2; x++)
+                        +product('Skippy v3', '165 000 руб', '/img/item-store.png')
+            .new-collection__container        
+                .new-collection__cover 
+                    +title('Новая коллекция')
+                    .new-collection__btm
+                        +btm('Каталог')
+        section.old-collection
+            .old-collection__cover 
+            .old-collection__info 
+                +title('коллекция 2018')
+                p.old-collection__description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non rutrum ornare ut mattis habitant dui arcu. Sagittis amet nunc ut neque quis nibh arcu. Vivamus vestibulum nisi et venenatis sed scelerisque magna consectetur. Amet convallis quis gravida facilisis vulputate. Faucibus facilisi habitasse ipsum interdum dictum aliquet. Velit quis ullamcorper pulvinar nulla malesuada integer. Aenean praesent viverra nulla nullam natoque volutpat curabitur auctor. Viverra viverra ullamcorper scelerisque risus dignissim egestas. Id aliquam a aliquam egestas leo orci pharetra sed diam. 
+                +btm('посмотреть коллекцию')
+        section.new-goods 
+            .wrapper.new-goods__wrapper
+                +title('новые поступления')
+                .new-goods__items
+                    - for(x = 0; x < 6; x++)
+                        +product('Skippy v3', '165 000 руб', '/img/item-store.png')
+        section.brands
+            +title('наши бренды')
+            img.brands__img(src="/img/logo-brands.svg", alt="brand")
+        footer.footer 
+            .wrapper.footer__wrapper
+                .footer__page
+                    p.footer__title О магазине
+                    p.footer__description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mi semper viverra nunc cursus tortor lectus nunc nulla nibh. Egestas amet consectetur vel vitae aliquam dictum suspendisse. Lobortis eget consequat, tellus et et sed turpis. Pretium quisque vitae, amet, porttitor odio ultricies massa pharetra leo. Et ipsum urna fames in sit mi ultrices nisi, nunc.
+                .footer__page
+                    p.footer__title Категории
+                    .footer__categories
+                        +btm('ОРУЖИЕ')
+                        +btm('ПРОТЕЗЫ')
+                        +btm('ИМПЛАНТЫ')
+                        +btm('СОФТ')
+                .footer__page
+                    p.footer__title РАссылка
+                    p.footer__description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mi semper viverra nunc cursus tortor lectus nunc nulla nibh.
+                    .footer__email
+                        input.footer__input-email(type="email")
+                        .footer__subscribe
+                            a(href="#").footer__sub ПОДПИСАТЬСЯ
+        section.last-line 
+            p © 2020 Все права защищены
+            p limnull
+                    

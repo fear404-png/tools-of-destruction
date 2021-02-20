@@ -1,1 +1,395 @@
-@import "variabies";
+@import "variables";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Jura", sans-serif;
+  background: $bg;
+  max-width: 1920px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.wrapper {
+  max-width: 1110px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+//mixin
+.title {
+  display: flex;
+  width: min-content;
+  flex-flow: column;
+
+  &__text {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $accent;
+    font-size: 36px;
+    white-space: nowrap;
+  }
+  &__streak {
+    margin: auto;
+    background: $accent;
+    width: 120px;
+    height: 1px;
+  }
+}
+
+.product {
+  color: $accent;
+  &__name {
+    font-size: 18px;
+  }
+  &__price {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+.btm {
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  height: 47px;
+  width: min-content;
+  border: 1px solid $accent;
+  transition: all 0.4s ease 0s;
+  &__text {
+    white-space: nowrap;
+    font-size: 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $accent;
+    transition: all 0.4s ease 0s;
+  }
+}
+.btm:hover {
+    background: $accent;
+}
+.btm__text:hover {
+    color: $bg;
+}
+
+.header {
+  color: $red;
+
+  //top-panel
+  &__top {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    font-size: 12px;
+    background: $bg;
+  }
+  &__contacts {
+    display: inline-flex;
+    flex: 0 0 50%;
+  }
+  &__phone-img {
+    margin-right: 10px;
+  }
+  &__account {
+    display: inline-flex;
+    flex: 0 0 50%;
+    justify-content: end;
+    
+  }
+  &__login {
+    color: $red;
+    text-decoration: none;
+    transition: all 0.1s ease 0s;
+  }
+  &__login:hover {
+      color: $redAccent;
+  }
+  &__account-img {
+    margin-right: 10px;
+  }
+
+  //bottom-panel
+  &__bot {
+    display: flex;
+    align-items: center;
+    margin: 13px 0;
+  }
+  &__logo {
+    display: flex;
+    flex: 0 0 50%;
+    @include breakpoint (lg) {
+        flex: 0 0 20%;
+    }
+    &-link {
+      text-decoration: none;
+      color: $redAccent;
+      font-size: 36px;
+      transition: all 0.5s ease 0s;
+    }
+    &-link:hover{
+        color:$accent;
+    }
+  }
+  &__navigation-panel {
+    display: flex;
+    justify-content: end;
+    flex: 0 0 50%;
+    @include breakpoint (lg) {
+        flex: 0 0 80%;
+    }
+  }
+  &__nav {
+    list-style-type: none;
+    display: inline-flex;
+
+    &-item {
+      text-transform: uppercase;
+      font-size: 14px;
+      color: $red;
+      text-decoration: none;
+      margin-right: 20px;
+      transition: all 0.5s ease 0s;
+    }
+    &-item:hover {
+        color: $accent;
+        font-size: 15px;
+        
+    }
+  }
+  &__bascet-img {
+    margin-left: 30px;
+  }
+
+  &__search-img {
+    margin-left: 30px;
+  }
+}
+
+//main
+.main {
+  background: url("/img/bg-main.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 810px;
+  padding-top: 160px;
+  transition: all 10s ease 0s;
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+  }
+  &__logo {
+    margin-bottom: 60px;
+    width: 320px;
+  }
+  &__description {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: $accent;
+    margin-top: 80px;
+    max-width: 710px;
+  }
+}
+
+.main:hover {
+    background-position: 0;
+}
+
+//new-collection
+.new-collection {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 100%;
+  &__season {
+    display: flex;
+    width: 55%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    @include breakpoint (lg) {
+        width: 100%;
+    }
+  }
+  &__items {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+  }
+
+  &__product {
+    margin: 15px;
+    @include breakpoint (lg) {
+        margin: 15px 70px;
+    }
+  }
+
+  &__container {
+    background-image: url("/img/bg-section-1.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    width: 45%;
+    justify-content: center;
+    transition: all 0.5s ease 0s;
+    @include breakpoint (lg) {
+        margin-top: 50px;
+        width: 100%;
+    }
+  }
+  &__container:hover {
+    background-position: center top;
+  }
+  &__cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 300px;
+    justify-content: space-around;
+    @include breakpoint (lg) {
+        margin-bottom: 60px;
+        padding-top: 250px;
+        justify-content: space-between;
+    }
+  }
+  &__btm {
+    padding: 30px 0;
+
+  }
+}
+
+//old-collection
+.old-collection {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 100%;
+  
+  &__cover {
+    width: 45%;
+    background: url("/img/bg-section-2.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all 0.5s ease 0s;
+    @include breakpoint (lg) {
+        width: 100%;
+    }
+  }
+  &__cover:hover {
+      background-position: center top;
+  }
+  &__info {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      width: 55%;  
+      padding: 110px 0;
+      color: $accent;
+      @include breakpoint (lg) {
+        width: 100%;
+    }
+      
+  }
+  &__description {
+      margin-top: 45px;
+      max-width: 471px;
+      text-align: center;
+  }
+}
+
+//new-goods
+.new-goods {
+    margin-top: 120px;
+    &__wrapper {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 80px;
+    }
+}
+
+//brands 
+.brands {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding-top: 60px;
+    &__img {
+        margin-top: 40px;
+    }
+}
+
+.footer {
+    margin-top: 65px;
+    display: flex;
+    align-items: center;
+    background: url("/img/bg-footer.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: $accent;
+    @include breakpoint (md) {
+        background: $bg;
+    }
+    &__wrapper {
+        display: flex;
+        margin: 50px auto;
+        justify-content: space-between;
+        @include breakpoint (md) {
+            flex-flow: column;
+            align-items: center;
+        }
+    }
+    &__page {
+        width: 30%;
+    }
+    &__title {
+        font-size: 24px;
+        text-transform: uppercase;
+        margin-bottom: 20pxpx;
+    }
+    &__btm {
+        margin: 2px;
+    }
+    &__description {
+        font-size: 14px;
+    }
+    &__categories {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    &__email {
+        display: flex;
+        
+    }
+    &__input-email {
+        width: 150px
+    }
+    &__subscribe {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        background: #000;
+        height: 40px;
+    }
+    &__sub {
+        text-decoration: none;
+        color: $accent;
+    }
+}
+.last-line {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 12px;
+    padding: 20px 20px;
+}
