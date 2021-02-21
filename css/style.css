@@ -395,6 +395,11 @@ body {
 .footer__input-email {
   width: 150px;
 }
+@media (max-width: 992px) {
+  .footer__input-email {
+    width: 70%;
+  }
+}
 .footer__subscribe {
   display: flex;
   align-items: center;

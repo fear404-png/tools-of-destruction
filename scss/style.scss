@@ -382,6 +382,9 @@ body {
   }
   &__input-email {
     width: 150px;
+    @include breakpoint(md) {
+      width: 70%;
+    }
   }
   &__subscribe {
     display: flex;
